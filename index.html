@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <title>Daria Lysak — Product Designer &amp; AI Developer</title>
+    <meta
+      name="description"
+      content="Personal bento grid page for Daria Lysak — Product Designer & AI Developer. Portfolio and contacts."
+    />
+
+    <!-- Font Awesome via cdnjs (brands icons support) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      referrerpolicy="no-referrer"
+    />
+
+    <style>
+      :root {
+        --bg-0: #070a12;
+        --bg-1: #0b1020;
+        --text: rgba(255, 255, 255, 0.92);
+        --muted: rgba(255, 255, 255, 0.7);
+        --soft: rgba(255, 255, 255, 0.12);
+        --stroke: rgba(255, 255, 255, 0.18);
+        --shadow: 0 18px 50px rgba(0, 0, 0, 0.55);
+        --radius: 22px;
+        --gap: 14px;
+        --focus: 0 0 0 3px rgba(234, 76, 137, 0.35);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(1200px 700px at 10% 0%, rgba(234, 76, 137, 0.18), transparent 60%),
+          radial-gradient(1000px 650px at 85% 10%, rgba(34, 158, 217, 0.18), transparent 55%),
+          radial-gradient(900px 600px at 70% 85%, rgba(155, 120, 255, 0.18), transparent 55%),
+          linear-gradient(180deg, var(--bg-0), var(--bg-1));
+        overflow-x: hidden;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: min(1040px, 100%);
+        margin: 0 auto;
+        padding: 18px 16px 36px;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 12px;
+        padding: 10px 2px 18px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: baseline;
+        gap: 10px;
+      }
+
+      .brand strong {
+        font-weight: 700;
+        letter-spacing: 0.2px;
+      }
+
+      .pill {
+        font-size: 12px;
+        color: var(--muted);
+        border: 1px solid var(--stroke);
+        background: rgba(255, 255, 255, 0.06);
+        padding: 6px 10px;
+        border-radius: 999px;
+        backdrop-filter: blur(10px);
+      }
+
+      main {
+        display: flex;
+        flex-direction: column;
+        gap: var(--gap);
+      }
+
+      .grid-secondary {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--gap);
+      }
+
+      /* Tablet */
+      @media (min-width: 640px) {
+        .container {
+          padding: 26px 18px 44px;
+        }
+
+        .grid-secondary {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      .card {
+        position: relative;
+        border-radius: var(--radius);
+        border: 1px solid var(--stroke);
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.06));
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        backdrop-filter: blur(16px);
+      }
+
+      .card::before {
+        content: "";
+        position: absolute;
+        inset: -1px;
+        background: radial-gradient(800px 180px at 15% 0%, rgba(255, 255, 255, 0.1), transparent 55%);
+        opacity: 0.9;
+        pointer-events: none;
+      }
+
+      .card-inner {
+        position: relative;
+        height: 100%;
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .profile {
+        display: grid;
+        grid-template-columns: 92px 1fr;
+        gap: 14px;
+        align-items: center;
+      }
+
+      .hero-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+      }
+
+      .hero-row .btn {
+        margin-left: auto;
+        white-space: nowrap;
+      }
+
+      @media (max-width: 639px) {
+        .hero-row {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .hero-row .btn {
+          margin-left: 0;
+          width: 100%;
+          justify-content: center;
+        }
+      }
+
+      .avatar {
+        width: 92px;
+        height: 92px;
+        border-radius: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.06);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+      }
+
+      .avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .name {
+        margin: 0;
+        font-size: 22px;
+        line-height: 1.12;
+        letter-spacing: 0.2px;
+      }
+
+      .role {
+        margin: 6px 0 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .hint {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.65);
+        font-size: 13px;
+        line-height: 1.35;
+      }
+
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 10px 12px;
+        border-radius: 14px;
+        border: 1px solid var(--stroke);
+        background: rgba(0, 0, 0, 0.18);
+        color: var(--text);
+        transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+        cursor: pointer;
+        user-select: none;
+        min-height: 42px;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+        border-color: rgba(255, 255, 255, 0.26);
+        background: rgba(0, 0, 0, 0.26);
+      }
+
+      .btn:focus-visible {
+        outline: none;
+        box-shadow: var(--focus);
+      }
+
+      .social {
+        --brand: #ffffff;
+        display: block;
+        cursor: pointer;
+        transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+      }
+
+      .social .top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .social .label {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .social .label strong {
+        font-size: 16px;
+        letter-spacing: 0.2px;
+      }
+
+      .social .label span {
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      .icon-wrap {
+        width: 46px;
+        height: 46px;
+        border-radius: 16px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        background: rgba(255, 255, 255, 0.06);
+        transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+      }
+
+      .icon-wrap i {
+        font-size: 20px;
+        color: rgba(255, 255, 255, 0.86);
+        transition: transform 180ms ease, color 180ms ease;
+      }
+
+      .social:hover .icon-wrap,
+      .social:focus-within .icon-wrap {
+        border-color: color-mix(in oklab, var(--brand) 55%, rgba(255, 255, 255, 0.18));
+        background: color-mix(in oklab, var(--brand) 12%, rgba(255, 255, 255, 0.06));
+        transform: translateY(-2px);
+      }
+
+      .social:hover .icon-wrap i,
+      .social:focus-within .icon-wrap i {
+        color: var(--brand);
+        transform: scale(1.18);
+      }
+
+      .social:hover {
+        transform: translateY(-2px);
+        border-color: rgba(255, 255, 255, 0.26);
+      }
+
+      .social:focus-visible {
+        outline: none;
+        box-shadow: var(--focus);
+        border-radius: var(--radius);
+      }
+
+      .social.card {
+        text-decoration: none;
+      }
+
+      .email-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .btn.small {
+        padding: 9px 11px;
+        border-radius: 12px;
+        min-height: 40px;
+      }
+
+      .meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .meta small {
+        color: rgba(255, 255, 255, 0.62);
+      }
+
+      .toast {
+        position: fixed;
+        left: 50%;
+        bottom: 16px;
+        transform: translateX(-50%);
+        background: rgba(10, 12, 20, 0.72);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        padding: 10px 12px;
+        border-radius: 999px;
+        color: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 14px 40px rgba(0, 0, 0, 0.55);
+        backdrop-filter: blur(12px);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 180ms ease, transform 180ms ease;
+        font-size: 13px;
+        max-width: calc(100% - 24px);
+        text-align: center;
+      }
+
+      .toast[data-visible="true"] {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-2px);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          scroll-behavior: auto !important;
+          transition: none !important;
+          animation: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="brand" aria-label="Personal page header">
+          <strong>Product Designer &amp; AI Developer</strong>
+        </div>
+      </header>
+
+      <main aria-label="Bento grid">
+        <!-- Profile / hero -->
+        <section class="card" aria-label="Profile card">
+          <div class="card-inner">
+            <div class="hero-row" aria-label="Hero content">
+              <div class="profile">
+                <div class="avatar" aria-label="Profile photo">
+                  <img
+                    src="photo%20for%20portfolio.jpg"
+                    alt="Daria Lysak portrait photo"
+                    loading="lazy"
+                  />
+                </div>
+                <div>
+                  <h1 class="name">Daria Lysak</h1>
+                  <p class="role">Product Designer &amp; AI Developer</p>
+                  <p class="hint">I design polished interfaces that ship fast and stay maintainable.</p>
+                </div>
+              </div>
+
+              <a
+                class="btn"
+                href="https://darlysportfolio.lovable.app"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Open portfolio website"
+              >
+                <i class="fa-solid fa-link" aria-hidden="true"></i>
+                Portfolio website
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section class="grid-secondary" aria-label="Links grid">
+          <!-- Behance -->
+          <a
+            class="card social"
+            style="--brand: #1769ff"
+            href="https://www.behance.net/darialysak_ux_ui"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Open Behance portfolio"
+          >
+            <div class="card-inner" aria-label="Behance card">
+              <div class="top">
+                <div class="label">
+                  <strong>Behance</strong>
+                  <span>Main portfolio</span>
+                </div>
+                <span class="icon-wrap" aria-hidden="true">
+                  <i class="fa-brands fa-behance" aria-hidden="true"></i>
+                </span>
+              </div>
+              <div class="meta">
+                <small>Selected • case studies • UI</small>
+                <small aria-hidden="true">↗</small>
+              </div>
+            </div>
+          </a>
+
+          <!-- Instagram -->
+          <a
+            class="card social"
+            style="--brand: #e1306c"
+            href="https://www.instagram.com/darides_?igsh=MWRycmE0dmV0Z3FqNg%3D%3D&utm_source=qr"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Open Instagram"
+          >
+            <div class="card-inner" aria-label="Instagram card">
+              <div class="top">
+                <div class="label">
+                  <strong>Instagram</strong>
+                  <span>Lifestyle</span>
+                </div>
+                <span class="icon-wrap" aria-hidden="true">
+                  <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                </span>
+              </div>
+              <p class="hint" style="margin: 0">Behind the scenes, inspiration, and daily notes.</p>
+            </div>
+          </a>
+
+          <!-- Telegram -->
+          <a
+            class="card social"
+            style="--brand: #229ed9"
+            href="https://t.me/darlys_ua"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Open Telegram"
+          >
+            <div class="card-inner" aria-label="Telegram card">
+              <div class="top">
+                <div class="label">
+                  <strong>Telegram</strong>
+                  <span>Contacts</span>
+                </div>
+                <span class="icon-wrap" aria-hidden="true">
+                  <i class="fa-brands fa-telegram" aria-hidden="true"></i>
+                </span>
+              </div>
+              <p class="hint" style="margin: 0">The fastest way to message and discuss a project.</p>
+            </div>
+          </a>
+
+          <!-- Email -->
+          <section class="card social" style="--brand: #a78bfa" aria-label="Email card">
+            <div class="card-inner">
+              <div class="top">
+                <div class="label">
+                  <strong>Email</strong>
+                  <span>darilysak@gmail.com</span>
+                </div>
+                <span class="icon-wrap" aria-hidden="true">
+                  <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                </span>
+              </div>
+              <div class="email-actions" aria-label="Email actions">
+                <button class="btn small" type="button" id="copyEmail2" aria-label="Copy email darilysak@gmail.com">
+                  <i class="fa-solid fa-copy" aria-hidden="true"></i>
+                  Copy
+                </button>
+                <a class="btn small" href="mailto:darilysak@gmail.com" aria-label="Send an email to darilysak@gmail.com">
+                  <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+                  Send
+                </a>
+              </div>
+            </div>
+          </section>
+        </section>
+      </main>
+
+      <p class="hint" style="margin: 16px 2px 0; text-align: center">
+        © <span id="year"></span> Daria Lysak
+      </p>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script>
+      const EMAIL = "darilysak@gmail.com";
+      const toast = document.getElementById("toast");
+
+      function showToast(message) {
+        if (!toast) return;
+        toast.textContent = message;
+        toast.dataset.visible = "true";
+        window.clearTimeout(showToast._t);
+        showToast._t = window.setTimeout(() => {
+          toast.dataset.visible = "false";
+        }, 1700);
+      }
+
+      async function copyEmail() {
+        try {
+          await navigator.clipboard.writeText(EMAIL);
+          showToast("Email copied: " + EMAIL);
+        } catch {
+          showToast("Couldn't copy. Email: " + EMAIL);
+        }
+      }
+
+      const copyBtn2 = document.getElementById("copyEmail2");
+      copyBtn2?.addEventListener("click", copyEmail);
+
+      const year = document.getElementById("year");
+      if (year) year.textContent = String(new Date().getFullYear());
+    </script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+---
+description: Expert Frontend UX/UI standards (semantic HTML/CSS, vanilla JS, responsive, a11y, production-ready)
+alwaysApply: true
+---
+
+# Expert Frontend UX/UI Standards
+
+You are an expert Frontend Developer focused on **UX/UI**. Follow these rules:
+
+1. **Use modern semantic HTML5 and CSS3**: Prefer correct elements (`header`, `main`, `nav`, `section`, `article`, `button`, `form`, `label`) and modern layout with **Flexbox/Grid**. Don’t use clickable `div`s; use `button`/`a`.
+2. **No jQuery or old frameworks**: Use **Vanilla JS only** (ES modules, `addEventListener`, `fetch`), and favor progressive enhancement.
+3. **Mobile-first & fully responsive**: Base styles for small screens; add enhancements with `@media (min-width: ...)`. Prefer fluid sizing (`rem`, `%`, `min()`, `max()`, `clamp()`) over fixed pixel layouts.
+4. **Accessibility is priority**: Keyboard support, visible focus, correct labels, and appropriate ARIA (including `aria-label` when needed). Respect `prefers-reduced-motion`.
+5. **Clean, well-commented, production-ready code**: Consistent naming, no dead code, no leftover `console.log`. Comments explain **intent/constraints**, not obvious code.
+
+## Quick examples
+
+```html
+<button type="button" aria-label="Open menu" class="icon-button">
+  <span aria-hidden="true">☰</span>
+</button>
+```
+
+```css
+.layout { display: grid; gap: 1rem; }
+@media (min-width: 48rem) { .layout { grid-template-columns: 16rem 1fr; } }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto; transition: none !important; } }
+```
+
+```js
+const button = document.querySelector('[aria-label="Open menu"]');
+button?.addEventListener('click', () => document.documentElement.classList.toggle('menu-open'));
+```
